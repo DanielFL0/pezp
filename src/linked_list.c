@@ -14,6 +14,7 @@ void insert(linked_list* list, int data) {
   node_t* node = create_node(data);
   if (list->head == NULL) {
     list->head = node;
+    
   } else {
     node_t* current = list->head;
     while (current->next != NULL) {
@@ -24,10 +25,24 @@ void insert(linked_list* list, int data) {
   list->size++;
 }
 
+void delete_linked_list(linked_list* list) {
+  if (list->head == NULL) {
+    return;
+  } else {
+    node_t* current = list->head;
+    while (current->next != NULL) {
+      node_t* temp = current;
+      current = current->next;
+      delete_node(temp);    
+    }
+    free(list);
+  }
+}
+
 void print_linked_list(linked_list* list) {
   node_t* current = list->head;
   while (current != NULL) {
-    printf("%d ", current->vertex);
+    print_node(current);
     current = current->next;
   }
   printf("\n");
