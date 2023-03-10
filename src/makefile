@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -g -Wall
 TARGET = pezp
-DEPS = linked_list.c node.c
+DEPS = arena.c node.c linked_list.c
 
 all: $(TARGET)
 
