@@ -7,5 +7,6 @@ typedef struct node_t {
 } node_t;
 
 node_t* create_node(int vertex);
+void delete_node(node_t* node);
 
 #endif

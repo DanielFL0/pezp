@@ -8,3 +8,7 @@ node_t* create_node(int vertex) {
   node->next = NULL;
   return node;
 }
+
+void delete_node(node_t* node) {
+  free(node);
+}
