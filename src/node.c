@@ -12,3 +12,7 @@ node_t* create_node(int vertex) {
 void delete_node(node_t* node) {
   free(node);
 }
+
+void print_node(node_t* node) {
+  printf("%d ", node->vertex);
+}
