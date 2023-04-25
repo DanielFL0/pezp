@@ -10,8 +10,8 @@ linked_list* create_linked_list(void) {
   return list;
 }
 
-void insert(linked_list* list, int data) {
-  node_t* node = create_node(data);
+void insert(linked_list* list, int vertex) {
+  node_t* node = create_node(vertex);
   if (list->head == NULL) {
     list->head = node;
     
