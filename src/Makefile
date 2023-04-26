@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -g -Wall
 TARGET = pezp
-DEPS = node.c linked_list.c virtual_machine.c
+DEPS = node.c linked_list.c eval.c
 
 all: $(TARGET)
 
