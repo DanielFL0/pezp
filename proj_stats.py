@@ -9,10 +9,9 @@ def print_file_stats(filepath):
     with open(filepath, 'r') as file_object:
         lines = file_object.readlines()
         for line in lines:
-            word_count += len(line.split(' '))
             line_count += 1
+            word_count += len(line.split(' '))
     print(f"{filepath}\nWORDS:\t{word_count}\nLINES:\t{line_count}")
-
 
 def get_file_stats(dirpath):
     files = listdir(dirpath)
