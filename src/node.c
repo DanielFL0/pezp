@@ -18,6 +18,10 @@ node_t* prev_node(node_t* node) {
   return node->prev;
 }
 
+void set_node(node_t* node, int vertex) {
+  node->vertex = vertex;
+}
+
 void delete_node(node_t* node) {
   free(node);
 }
