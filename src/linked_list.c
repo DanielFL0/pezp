@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
+#include "chunk.h"
 #include "node.h"
 #include "linked_list.h"
 
@@ -20,8 +22,8 @@ node_t* get_node(linked_list* list, int index) {
   return current;
 }
 
-void insert_node(linked_list* list, int vertex) {
-  node_t* node = create_node(vertex);
+void insert_node(linked_list* list, chunk_t* chunk) {
+  node_t* node = create_node(chunk);
   if (list->head == NULL) {
     list->head = node;
   } else {
