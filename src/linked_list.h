@@ -8,7 +8,7 @@ typedef struct linked_list {
 
 linked_list* create_linked_list(void);
 node_t* get_node(linked_list* list, int index);
-void insert_node(linked_list* list, int vertex);
+void insert_node(linked_list* list, chunk_t* chunk);
 void delete_linked_list(linked_list* list);
 void print_linked_list(linked_list* list);
 
