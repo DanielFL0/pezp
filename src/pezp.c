@@ -17,6 +17,8 @@ int main(void) {
   node_t* test = get_node(memory, 2);
   set_node(test, 44);
   print_linked_list(memory);
+  delete_node(test);
+  print_linked_list(memory);
   delete_linked_list(memory);
   return 0;
 }
