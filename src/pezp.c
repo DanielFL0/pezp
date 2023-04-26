@@ -6,6 +6,14 @@
 #include "defs.h"
 #include "eval.h"
 
+/*
+ * PROCEDURE:
+ * Load one instruction from memory at the address of the PC register.
+ * Increment the PC register.
+ * Look at the opcode to determine which type of instruction it should perform.
+ * Go back to step 1.
+ */
+
 int ip = 0; /* instruction pointer */
 int sp = 0; /* stack pointer */
 
