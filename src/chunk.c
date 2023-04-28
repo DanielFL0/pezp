@@ -1,18 +1,22 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "common.h"
 #include "chunk.h"
 
-chunk_t* create_chunk(int count, int capacity) {
-  chunk_t* chunk = malloc(sizeof(chunk_t));
-  chunk->count = count;
-  chunk->capacity = capacity;
-  return chunk;
+void init_chunk(chunk_t* chunk) {
+  chunk->count = 0;
+  chunk->capacity = 0;
+  chunk->code = NULL;
 }
 
-void print_chunk(chunk_t* chunk) {
-  printf("COUNT: %d CAPACITY: %d\n", chunk->count, chunk->capacity);
+void write_chunk(chunk_t* chunk, uint8_t byte) {
+  if (chunk->capacity < chunk->count + 1) {
+    chunk->capacity = chunk->capacity * 2;
+    chunk->code = realloc(chunk->code, chunk->capacity * sizeof(uint8_t));
+  }
+  chunk->code[chunk->count] = byte;
+  chunk->count++;
 }
 
-void delete_chunk(chunk_t* chunk) {
-  free(chunk);
+void free_chunk(chunk_t* chunk) {
+  free(chunk->code);
+  init_chunk(chunk);
 }
