@@ -7,9 +7,22 @@
 #define HALTED 0
 
 typedef enum {
-  OP_INC, /* increment the register */
-  OP_DEC, /* decrement the register */
-  OP_DONE /* stop execution*/
+  OP_BR,  /* branch */
+  OP_ADD, /* add */
+  OP_LD,  /* load */
+  OP_ST,  /* store */
+  OP_JSR, /* jump register */
+  OP_AND, /* bitwise and */
+  OP_LDR, /* load register */
+  OP_STR, /* store register */
+  OP_RTI, /* unused */
+  OP_NOT, /* bitwise not */
+  OP_LDI, /* load indirect */
+  OP_STI, /* store indirect */
+  OP_JMP, /* jump */
+  OP_RES, /* reserved */
+  OP_LEA, /* load effective address */
+  OP_TRAP /* execute trap */
 } opcodes;
 
 typedef enum {
