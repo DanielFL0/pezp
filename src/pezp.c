@@ -1,12 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include "chunk.h"
-#include "node.h"
-#include "linked_list.h"
+#include "common.h"
 #include "defs.h"
-#include "file_loader.h"
-#include "virtual_machine.h"
+#include "chunk.h"
+#include "debug.h"
 
 /*
  * PROCEDURE:
@@ -17,14 +12,10 @@
  */
 
 int main(void) {
-  linked_list* memory = create_linked_list();
-  for (int i = 0; i < 10; i++) {
-    chunk_t* chunk = create_chunk(i, i);
-    insert_node(memory, chunk);
-  }
-  print_linked_list(memory);
-  node_t* test = get_node(memory, 2);
-  print_node(test);
-  delete_linked_list(memory);
+  chunk_t chunk;
+  init_chunk(&chunk);
+  write_chunk(&chunk, OP_ADD);
+  disassemble_chunk(&chunk, "test chunk");
+  free_chunk(&chunk);
   return 0;
 }
