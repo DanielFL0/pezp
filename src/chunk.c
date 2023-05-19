@@ -9,7 +9,7 @@ void init_chunk(chunk_t* chunk) {
 
 void write_chunk(chunk_t* chunk, uint8_t byte) {
   if (chunk->buffer_offset <= chunk->buffer_length) {
-    *chunk->buffer_offset = byte;
+    *chunk->buffer_offset = byte; /* assign a value to the pointer */
     chunk->buffer_offset = chunk->buffer_offset + 1; /* point to next element in buffer */
   }
 }
