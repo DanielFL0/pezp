@@ -8,11 +8,10 @@ void init_chunk(chunk_t* chunk) {
 }
 
 void write_chunk(chunk_t* chunk, uint8_t byte) {
-  if (chunk->buffer_offset == chunk->buffer_length) {
-    printf("ERROR_EXHAUSTED_MEMORY\n");
+  if (chunk->buffer_offset <= chunk->buffer_length) {
+    *chunk->buffer_offset = byte;
+    chunk->buffer_offset = chunk->buffer_offset + 1; /* point to next element in buffer */
   }
-  *chunk->buffer_offset = byte;
-  chunk->buffer_offset = chunk->buffer_offset + 1; /* point to next element in buffer */
 }
 
 void disassemble_chunk(chunk_t* chunk, char* name) {
