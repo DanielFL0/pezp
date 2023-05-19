@@ -2,21 +2,30 @@
 #include "chunk.h"
 
 void init_chunk(chunk_t* chunk) {
-  chunk->count = 0;
-  chunk->capacity = 0;
-  chunk->code = NULL;
+  chunk->buffer = malloc(MEMORY_MAX); /* allocate 256 bytes */
+  chunk->buffer_offset = chunk->buffer; /* point beginning of buffer */
+  chunk->buffer_length = chunk->buffer + MEMORY_MAX - 1; /* point end of buffer */
 }
 
 void write_chunk(chunk_t* chunk, uint8_t byte) {
-  if (chunk->capacity < chunk->count + 1) {
-    chunk->capacity = chunk->capacity * 2;
-    chunk->code = realloc(chunk->code, chunk->capacity * sizeof(uint8_t));
+  if (chunk->buffer_offset == chunk->buffer_length) {
+    printf("ERROR_EXHAUSTED_MEMORY\n");
   }
-  chunk->code[chunk->count] = byte;
-  chunk->count++;
+  *chunk->buffer_offset = byte;
+  chunk->buffer_offset = chunk->buffer_offset + 1; /* point to next element in buffer */
+}
+
+void disassemble_chunk(chunk_t* chunk, char* name) {
+  printf("-- %s --\n", name);
+  int line_number = 0;
+  uint8_t* start = chunk->buffer;
+  while (start <= chunk->buffer_length) {
+    printf("%04d %p\t0o%03o\t0d%03d\t0x%02x\n", line_number, start, *start, *start, *start);
+    line_number = line_number + 1;
+    start = start + 1;
+  }
 }
 
 void free_chunk(chunk_t* chunk) {
-  free(chunk->code);
-  init_chunk(chunk);
+  free(chunk->buffer); /* free allocated buffer */
 }
