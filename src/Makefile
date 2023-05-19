@@ -2,10 +2,9 @@ CC = gcc
 CFLAGS = -g -Wall
 TARGET = pezp
 
-# TODO: check makefile
-DEPS = chunk.c debug.c
+DEPS = chunk.c
 
-PZPCCFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -std=c99
 
 all: $(TARGET)
 
