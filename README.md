@@ -1,1 +1,1 @@
-# The PEZP Programming Language
+# The PEZP Virtual Machine
